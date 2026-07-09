@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;600&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Brand Colors */
+    --teal: 175 100% 35%;
+    --sky-blue: 199 100% 44%;
+    --dark-navy: 201 60% 17%;
+    --light-sky-bg: 169 58% 97%; /* #F2FDFB */
+
+    /* Explicitly requested tokens */
+    --navy: #0E3A53;
+    --teal-hex: #14C8A4;
+    --sky-blue-hex: #1E9FE0;
+    --light-bg: #F4F7F9;
+
+    /* Carousel Specific Colors */
+    --carousel-navy: #0E3A53;
+    --carousel-teal: #14C8A4;
+
+    /* Business Section Colors */
+    --business-navy: #0E3A53;
+    --business-teal: #14C8A4;
+    --business-sky: #1E9FE0;
+    --business-light: #F2FAFD;
+    --business-border: #C5E4F3;
+
+    /* New Footer Custom Properties */
+    --footer-bg: #0E3A53;
+    --footer-accent: #14C8A4;
+    --footer-text-70: rgba(255, 255, 255, 0.70);
+    --footer-text-45: rgba(255, 255, 255, 0.45);
+    --footer-text-40: rgba(255, 255, 255, 0.40);
+    --footer-border-18: rgba(255, 255, 255, 0.18);
+    --footer-border-10: rgba(255, 255, 255, 0.10);
+
+    /* Shadcn core mapped to brand */
+    --background: 200 100% 98%;
+    --foreground: var(--dark-navy);
+    
+    --primary: var(--teal);
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 199 30% 90%;
+    --secondary-foreground: var(--dark-navy);
+    
+    --accent: var(--sky-blue);
+    --accent-foreground: 0 0% 100%;
+    
+    --muted: 200 30% 92%;
+    --muted-foreground: 201 30% 45%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: var(--dark-navy);
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: var(--dark-navy);
+    
+    --border: 200 25% 88%;
+    --input: 200 25% 88%;
+    --ring: var(--teal);
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --radius: 0.75rem;
+
+    /* Modal Tokens */
+    --modal-bg: 0 0% 100%;
+    --modal-border: 200 25% 88%;
+    --modal-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    --modal-overlay: rgba(0, 0, 0, 0.4);
+  }
+  
+  .dark {
+    --background: var(--dark-navy);
+    --foreground: 0 0% 98%;
+    
+    --primary: var(--teal);
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 201 40% 25%;
+    --secondary-foreground: 0 0% 98%;
+    
+    --accent: var(--sky-blue);
+    --accent-foreground: 0 0% 100%;
+    
+    --muted: 201 40% 22%;
+    --muted-foreground: 201 20% 70%;
+    
+    --card: 201 50% 14%;
+    --card-foreground: 0 0% 98%;
+    
+    --popover: 201 50% 14%;
+    --popover-foreground: 0 0% 98%;
+    
+    --border: 201 40% 25%;
+    --input: 201 40% 25%;
+    --ring: var(--teal);
+
+    /* Modal Tokens */
+    --modal-bg: 201 50% 14%;
+    --modal-border: 201 40% 25%;
+    --modal-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    --modal-overlay: rgba(0, 0, 0, 0.7);
+  }
+  
+  * {
+    border-color: hsl(var(--border));
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: "DM Sans", sans-serif;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    overflow-x: clip;
+    font-feature-settings: "kern" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+    letter-spacing: -0.02em;
+  }
+  
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  .btn-gradient-brand {
+    @apply bg-gradient-to-r from-[hsl(var(--teal))] to-[hsl(var(--sky-blue))] text-white font-semibold shadow-md hover:opacity-95 hover:shadow-lg transition-all active:scale-[0.98] rounded-full;
+  }
+
+  /* Business Section Styles */
+  .business-input {
+    @apply w-full px-4 py-3 bg-white border-[1.5px] border-[var(--business-border)] rounded-[8px] text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--business-teal)] focus:border-transparent transition-all duration-200;
+  }
+
+  .business-btn-gradient {
+    background: linear-gradient(135deg, var(--business-teal), var(--business-sky));
+    @apply text-white font-semibold shadow-md hover:opacity-95 hover:shadow-lg transition-all active:scale-[0.98] rounded-full px-8 py-3 flex items-center justify-center;
+  }
+
+  .business-card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_-10px_rgba(14,58,83,0.15)];
+  }
+
+  /* Footer Section Styles */
+  .footer-heading {
+    @apply text-[13px] font-semibold text-white tracking-[0.06em] uppercase mb-[18px];
+  }
+  
+  .footer-link {
+    @apply text-[14px] text-[var(--footer-text-70)] no-underline hover:text-white transition-colors duration-150;
+  }
+  
+  .footer-social-btn {
+    @apply flex items-center justify-center w-[40px] h-[40px] rounded-full border-[1.5px] border-[var(--footer-border-18)] bg-transparent hover:border-[var(--footer-accent)] transition-all duration-200;
+  }
+}
+
+@layer utilities {
+  .font-pricing {
+    font-family: 'DM Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+  
+  .brand-gradient {
+    background: linear-gradient(135deg, #14C8A4, #1E9FE0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: inherit;
+  }
+  
+  /* Modal Animations */
+  .modal-overlay-enter {
+    animation: fade-in 0.2s ease-out forwards;
+  }
+  .modal-overlay-exit {
+    animation: fade-out 0.2s ease-in forwards;
+  }
+  .modal-content-enter-mobile {
+    animation: slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .modal-content-exit-mobile {
+    animation: slide-down 0.2s ease-in forwards;
+  }
+  .modal-content-enter-desktop {
+    animation: scale-in 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .modal-content-exit-desktop {
+    animation: scale-out 0.15s ease-in forwards;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+  @keyframes slide-up {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+  @keyframes slide-down {
+    from { transform: translateY(0); }
+    to { transform: translateY(100%); }
+  }
+  @keyframes scale-in {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes scale-out {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.95); }
+  }
+}
